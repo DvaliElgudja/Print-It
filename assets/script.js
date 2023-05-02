@@ -29,3 +29,23 @@ function updateSlide() {
 	// Update the dot indicators
 	dotCreate();
   }
+
+
+// Handle clicking the right arrow
+document.querySelector(".arrow_right").addEventListener("click", function () {
+	currentSlide++;
+	if (currentSlide >= slides.length) {
+	  currentSlide = 0;
+	}
+	updateSlide();
+  });
+  
+  // Handle clicking the left arrow
+  document.querySelector(".arrow_left").addEventListener("click", function () {
+	currentSlide--;
+	if (currentSlide < 0) {
+	  currentSlide = slides.length - 1;
+	}
+	updateSlide();
+  });
+  
