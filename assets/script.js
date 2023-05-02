@@ -49,3 +49,15 @@ document.querySelector(".arrow_right").addEventListener("click", function () {
 	updateSlide();
   });
   
+  // Function to create and update the dot indicators
+function dotCreate() {
+	const dots = document.querySelector(".dots");
+	dots.innerHTML = slides
+	  .map((_, dotIndex) => `
+		<div class="dot${dotIndex === currentSlide ? " dot_selected" : ""}"></div>
+	  `)
+	  .join("");
+  }
+  
+  // Update the slide and dot indicators when the script runs
+  updateSlide();
