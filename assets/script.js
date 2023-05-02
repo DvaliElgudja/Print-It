@@ -16,3 +16,6 @@ const slides = [
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
+
+// Initialize the current slide index
+let currentSlide = 0;
