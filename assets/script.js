@@ -19,3 +19,13 @@ const slides = [
 
 // Initialize the current slide index
 let currentSlide = 0;
+
+// Function to update the displayed slide and dot indicators
+function updateSlide() {
+	// Change the image and tag line
+	document.querySelector(".banner-img").src = "./assets/images/slideshow/" + slides[currentSlide].image;
+	document.querySelector("#banner p").innerHTML = slides[currentSlide].tagLine;
+  
+	// Update the dot indicators
+	dotCreate();
+  }
