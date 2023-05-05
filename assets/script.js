@@ -15,6 +15,7 @@ const slides = [
 		"image":"slide4.png",
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
 	}
+	
 ]
 
 // Initialize the current slide index
@@ -51,13 +52,25 @@ document.querySelector(".arrow_right").addEventListener("click", function () {
   
   // Function to create and update the dot indicators
 function dotCreate() {
-	const dots = document.querySelector(".dots");
-	dots.innerHTML = slides
-	  .map((_, dotIndex) => `
-		<div class="dot${dotIndex === currentSlide ? " dot_selected" : ""}"></div>
-	  `)
-	  .join("");
-  }
-  
-  // Update the slide and dot indicators when the script runs
-  updateSlide();
+  const dots = document.querySelector(".dots");
+  dots.innerHTML = slides
+    .map(
+      (_, dotIndex) => `
+		<div class="dot${dotIndex === currentSlide ? " dot_selected" : ""}" data-index="${dotIndex}"></div>
+	  `
+    )
+    .join("");
+
+  // Add click event listeners for the dots
+  const dotElements = document.querySelectorAll(".dot");
+  dotElements.forEach((dotElement) => {
+    dotElement.addEventListener("click", function () {
+      const index = parseInt(dotElement.getAttribute("data-index"));
+      currentSlide = index;
+      updateSlide();
+    });
+  });
+}
+
+// Update the slide and dot indicators when the script runs
+updateSlide();
